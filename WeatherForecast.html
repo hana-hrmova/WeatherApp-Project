@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Weather Forecast ☀️</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Caudex:wght@700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  </head>
+  <body>
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-8">
+          <div class="row">
+            <div class="formular">
+              <form id="submit-form">
+                <input
+                  type="text"
+                  placeholder="Search a city"
+                  id="entered-city"
+                />
+                <span class="enter">
+                  <input
+                    type="submit"
+                    value="Enter"
+                    class="btn btn-outline-info"
+                  />
+                </span>
+              </form>
+              <button type="button" class="btn btn-outline-info" id="current">
+                Current
+              </button>
+
+              <button
+                type="button"
+                class="btn btn-outline-warning"
+                id="celzius"
+              >
+                °C
+              </button>
+              <button
+                type="button"
+                class="btn btn-outline-warning"
+                id="fahrenheit"
+              >
+                °F
+              </button>
+            </div>
+          </div>
+
+          <div class="row current">
+            <h1 class="col-4" id="city-name"></h1>
+            <h1 class="col-2" id="current-temperature"></h1>
+          </div>
+          <div class="row time">
+            <div class="col-2">
+              <p>
+                Wind: 0km/h
+                <br />
+                Humidity: 13%
+              </p>
+            </div>
+            <div class="col-4">
+              <h5 id="date"></h5>
+            </div>
+          </div>
+          <div class="hours">
+            <div class="hours-container">
+              <div class="row">
+                <div class="col-sm border">
+                  19°C
+                  <br />
+                  🌙
+                  <br />
+                  3:00
+                </div>
+                <div class="col-sm border">
+                  22°C
+                  <br />
+                  🌙
+                  <br />
+                  6:00
+                </div>
+                <div class="col-sm border">
+                  26°C
+                  <br />
+                  ☀️
+                  <br />
+                  9:00
+                </div>
+                <div class="col-sm border">
+                  30°C
+                  <br />
+                  ☀️
+                  <br />
+                  12:00
+                </div>
+                <div class="col-sm border">
+                  30°C
+                  <br />
+                  ☀️
+                  <br />
+                  15:00
+                </div>
+                <div class="col-sm border">
+                  27°C
+                  <br />
+                  ☀️
+                  <br />
+                  18:00
+                </div>
+                <div class="col-sm border">
+                  24°C
+                  <br />
+                  🌙
+                  <br />
+                  21:00
+                </div>
+                <div class="col-sm border">
+                  20°C
+                  <br />
+                  🌙
+                  <br />
+                  0:00
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <div class="days">
+            <ul style="list-style: none">
+              <li>Tuesday ☀️ 31°C/22°C</li>
+              <li>Wednesday ☀️ 29°C/21°C</li>
+              <li>Thursday ☀️ 30°C/23°C</li>
+              <li>Friday ☀️ 29°C/20°C</li>
+              <li>Saturday ☀️ 31°C/22°C</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="script.js"></script>
+  </body>
+</html>

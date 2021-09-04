@@ -1,0 +1,21 @@
+.container {
+  border: 2px solid pink;
+  padding: 30px;
+}
+.border {
+  border: 3px solid blueviolet !important;
+  text-align: center;
+  padding: 5px;
+  margin: 2px 5px;
+}
+
+.days li {
+  border: 2px solid red;
+  margin: 15px 5px;
+  padding: 10px 5px;
+  text-align: center;
+}
+
+.time h5 {
+  text-align: right;
+}
