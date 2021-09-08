@@ -1,16 +1,28 @@
 .container {
-  border: 2px solid pink;
+  border: 2px solid #deecff;
   padding: 30px;
+  margin-top: 50px;
+  background-color: #deecff;
+  border-radius: 15px;
 }
 .border {
-  border: 3px solid blueviolet !important;
+  border: 3px solid #fdcfdf !important;
+  border-radius: 10px;
   text-align: center;
-  padding: 5px;
+  padding: 15px 5px;
   margin: 2px 5px;
+  background-color: #fdcfdf;
+}
+
+.border :hover {
+  background-color: #fff;
+  border-color: #fdcfdf;
 }
 
 .days li {
-  border: 2px solid red;
+  border: 2px solid #e8d3ff;
+  background-color: #e8d3ff;
+  border-radius: 30px;
   margin: 15px 5px;
   padding: 10px 5px;
   text-align: center;
