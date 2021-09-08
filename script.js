@@ -20,6 +20,15 @@ if (minute < 10) {
 let h5 = document.querySelector("#date");
 h5.innerHTML = `${day}, ${hour}:${minute}`;
 
+let apiUrlKrakow = `https://api.openweathermap.org/data/2.5/weather?q=Kraków&units=metric&appid=80a20630f94746a928bf00c16d04f78c`;
+axios.get(apiUrlKrakow).then(initialPage);
+
+function initialPage(response) {
+  let h1 = document.querySelector("#current-temperature");
+  let initialTemp = Math.round(response.data.main.temp);
+  h1.innerHTML = initialTemp + "°C";
+}
+
 function enteredCity(event) {
   event.preventDefault();
   let city = document.querySelector("#entered-city");
