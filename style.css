@@ -1,7 +1,11 @@
+body {
+  margin: 0 250px;
+}
 .container {
   border: 2px solid #deecff;
   padding: 30px;
   margin-top: 50px;
+  margin-right: 100px;
   background-color: #deecff;
   border-radius: 15px;
 }
@@ -12,11 +16,13 @@
   padding: 15px 5px;
   margin: 2px 5px;
   background-color: #fdcfdf;
+  transition: all 200ms ease-in-out;
 }
 
-.border :hover {
+.border:hover {
   background-color: #fff;
   border-color: #fdcfdf;
+  cursor: pointer;
 }
 
 .days li {
@@ -26,6 +32,13 @@
   margin: 15px 5px;
   padding: 10px 5px;
   text-align: center;
+  transition: all 200ms ease-in-out;
+}
+
+.days li:hover {
+  background-color: #fff;
+  border-color: #e8d3ff;
+  cursor: pointer;
 }
 
 .time h5 {
@@ -34,4 +47,20 @@
 
 .contact-info {
   text-align: center;
+}
+
+#city-name {
+  font-family: "Roboto", sans-serif;
+}
+
+#current-temperature {
+  font-family: "Roboto", sans-serif;
+}
+
+.additionalInf {
+  font-family: "Roboto", sans-serif;
+}
+
+.time {
+  font-family: "Roboto", sans-serif;
 }
