@@ -1,4 +1,5 @@
 let apiKey = "80a20630f94746a928bf00c16d04f78c";
+let publicTemp = 0;
 
 let now = new Date();
 let days = [
@@ -26,6 +27,7 @@ axios.get(apiUrlKrakow).then(initialPage);
 function initialPage(response) {
   let h1 = document.querySelector("#current-temperature");
   let initialTemp = Math.round(response.data.main.temp);
+  publicTemp = initialTemp;
   h1.innerHTML = initialTemp + "°C";
 }
 
@@ -44,8 +46,6 @@ function displayTemperature(response) {
   h1.innerHTML = temp + "°C";
   publicTemp = temp;
 }
-
-let publicTemp = 0;
 
 function displayTemperatureHere(response) {
   let temp = Math.round(response.data.main.temp);
