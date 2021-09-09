@@ -52,6 +52,7 @@ body {
 
 #city-name {
   font-family: "Roboto", sans-serif;
+  text-transform: capitalize;
 }
 
 #current-temperature {
