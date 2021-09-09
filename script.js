@@ -27,8 +27,17 @@ axios.get(apiUrlKrakow).then(initialPage);
 function initialPage(response) {
   let h1 = document.querySelector("#current-temperature");
   let initialTemp = Math.round(response.data.main.temp);
+  let description = document.querySelector("#weather-description");
+  let humidity = document.querySelector("#humidity");
+  let windSpeed = document.querySelector("#wind");
+
   publicTemp = initialTemp;
   h1.innerHTML = initialTemp + "°C";
+  description.innerHTML = response.data.weather[0].description;
+  windSpeed.innerHTML = `Wind Speed: ${Math.round(
+    response.data.wind.speed
+  )}km/h`;
+  humidity.innerHTML = `Humidity: ${response.data.main.humidity}%`;
 }
 
 function enteredCity(event) {
@@ -43,17 +52,35 @@ function enteredCity(event) {
 function displayTemperature(response) {
   let temp = Math.round(response.data.main.temp);
   let h1 = document.querySelector("#current-temperature");
+  let description = document.querySelector("#weather-description");
+  let windSpeed = document.querySelector("#wind");
+  let humidity = document.querySelector("#humidity");
+
   h1.innerHTML = temp + "°C";
   publicTemp = temp;
+  description.innerHTML = response.data.weather[0].description;
+  windSpeed.innerHTML = `Wind Speed: ${Math.round(
+    response.data.wind.speed
+  )}km/h`;
+  humidity.innerHTML = `Humidity: ${response.data.main.humidity}%`;
 }
 
 function displayTemperatureHere(response) {
   let temp = Math.round(response.data.main.temp);
   let h1 = document.querySelector("#current-temperature");
-  h1.innerHTML = temp + "°C";
-  publicTemp = temp;
   let here = document.querySelector("#city-name");
+  let description = document.querySelector("#weather-description");
+  let windSpeed = document.querySelector("#wind");
+  let humidity = document.querySelector("#humidity");
+
+  publicTemp = temp;
+  h1.innerHTML = temp + "°C";
   here.innerHTML = response.data.name;
+  humidity.innerHTML = `Humidity: ${response.data.main.humidity}%`;
+  windSpeed.innerHTML = `Wind Speed: ${Math.round(
+    response.data.wind.speed
+  )}km/h`;
+  description.innerHTML = response.data.weather[0].description;
 }
 
 let form = document.querySelector("#submit-form");
