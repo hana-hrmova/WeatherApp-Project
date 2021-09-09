@@ -30,6 +30,7 @@ function initialPage(response) {
   let description = document.querySelector("#weather-description");
   let humidity = document.querySelector("#humidity");
   let windSpeed = document.querySelector("#wind");
+  let icon = document.querySelector("#icon");
 
   publicTemp = initialTemp;
   h1.innerHTML = initialTemp + "°C";
@@ -38,6 +39,8 @@ function initialPage(response) {
     response.data.wind.speed
   )}km/h`;
   humidity.innerHTML = `Humidity: ${response.data.main.humidity}%`;
+  icon.setAttribute("src", `images/${response.data.weather[0].icon}@2x.png`);
+  icon.setAttribute("alt", response.data.weather[0].description);
 }
 
 function enteredCity(event) {
@@ -55,6 +58,7 @@ function displayTemperature(response) {
   let description = document.querySelector("#weather-description");
   let windSpeed = document.querySelector("#wind");
   let humidity = document.querySelector("#humidity");
+  let icon = document.querySelector("#icon");
 
   h1.innerHTML = temp + "°C";
   publicTemp = temp;
@@ -63,6 +67,8 @@ function displayTemperature(response) {
     response.data.wind.speed
   )}km/h`;
   humidity.innerHTML = `Humidity: ${response.data.main.humidity}%`;
+  icon.setAttribute("src", `images/${response.data.weather[0].icon}@2x.png`);
+  icon.setAttribute("alt", response.data.weather[0].description);
 }
 
 function displayTemperatureHere(response) {
@@ -72,6 +78,7 @@ function displayTemperatureHere(response) {
   let description = document.querySelector("#weather-description");
   let windSpeed = document.querySelector("#wind");
   let humidity = document.querySelector("#humidity");
+  let icon = document.querySelector("#icon");
 
   publicTemp = temp;
   h1.innerHTML = temp + "°C";
@@ -81,6 +88,8 @@ function displayTemperatureHere(response) {
     response.data.wind.speed
   )}km/h`;
   description.innerHTML = response.data.weather[0].description;
+  icon.setAttribute("src", `images/${response.data.weather[0].icon}@2x.png`);
+  icon.setAttribute("alt", response.data.weather[0].description);
 }
 
 let form = document.querySelector("#submit-form");
