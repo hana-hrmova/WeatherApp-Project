@@ -1,6 +1,7 @@
 body {
   margin: 0 250px;
 }
+
 .container {
   border: 2px solid #deecff;
   padding: 30px;
@@ -57,10 +58,16 @@ body {
   font-family: "Roboto", sans-serif;
 }
 
-.additionalInf {
-  font-family: "Roboto", sans-serif;
-}
-
 #weather-description {
   text-transform: capitalize;
+}
+
+#current-temperature {
+  text-align: right;
+  font-size: 42px;
+}
+
+#icon {
+  width: 73px;
+  height: 53px;
 }
