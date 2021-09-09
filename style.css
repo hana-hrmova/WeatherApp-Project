@@ -30,7 +30,7 @@ body {
   background-color: #e8d3ff;
   border-radius: 30px;
   margin: 15px 5px;
-  padding: 10px 5px;
+  padding: 15px 10px;
   text-align: center;
   transition: all 200ms ease-in-out;
 }
@@ -41,8 +41,8 @@ body {
   cursor: pointer;
 }
 
-.time h5 {
-  text-align: right;
+.time h4 {
+  font-family: "Roboto", sans-serif;
 }
 
 .contact-info {
@@ -61,6 +61,6 @@ body {
   font-family: "Roboto", sans-serif;
 }
 
-.time {
-  font-family: "Roboto", sans-serif;
+#weather-description {
+  text-transform: capitalize;
 }
