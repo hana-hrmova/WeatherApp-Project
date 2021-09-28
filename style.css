@@ -1,5 +1,6 @@
 body {
   margin: 0 250px;
+  font-family: "Roboto", sans-serif !important;
 }
 
 .container {
@@ -71,4 +72,8 @@ body {
 #icon {
   width: 73px;
   height: 53px;
+}
+
+.contact-info a {
+  color: #d77fa1;
 }

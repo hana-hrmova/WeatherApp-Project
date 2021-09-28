@@ -29,6 +29,11 @@ function forecastDaysAPI(coordinates) {
   axios.get(apiUrl).then(displayForecastDays);
 }
 
+function forecastHoursAPI(coordinates) {
+  let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=metric`;
+  axios.get(apiUrl).then(displayForecastHours);
+}
+
 function initialPage(response) {
   let h1 = document.querySelector("#current-temperature");
   let initialTemp = Math.round(response.data.main.temp);
@@ -48,6 +53,7 @@ function initialPage(response) {
   icon.setAttribute("alt", response.data.weather[0].description);
 
   forecastDaysAPI(response.data.coord);
+  forecastHoursAPI(response.data.coord);
 }
 
 function enteredCity(event) {
@@ -79,6 +85,7 @@ function displayTemperature(response) {
   icon.setAttribute("alt", response.data.weather[0].description);
 
   forecastDaysAPI(response.data.coord);
+  forecastHoursAPI(response.data.coord);
 }
 
 function displayTemperatureHere(response) {
@@ -102,6 +109,7 @@ function displayTemperatureHere(response) {
   icon.setAttribute("alt", response.data.weather[0].description);
 
   forecastDaysAPI(response.data.coord);
+  forecastHoursAPI(response.data.coord);
 }
 
 let form = document.querySelector("#submit-form");
@@ -147,11 +155,39 @@ function displayForecastDays(response) {
   forecastElement.innerHTML = forecastElementHTML;
 }
 
-function displayForecastHours(response) {}
+function formatHours(timestamp) {
+  let date = new Date(timestamp * 1000);
+  let hours = date.getHours();
+  return hours;
+}
 
-function forecastHoursAPI(position) {
-  let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${position.lat}&lon=${position.lon}&appid=${apiKey}`;
-  axios.get(apiUrl).then(displayForecastHours);
+function displayForecastHours(response) {
+  console.log(response.data.hourly);
+  let forecastHourly = response.data.hourly;
+  let forecastHourlyElement = document.querySelector("#forecast-hourly");
+  let forecastHourlyElementHTML = `<div class="row">`;
+  forecastHourly.forEach(function (hourlyForecast, index) {
+    if (index > 0 && index < 7) {
+      forecastHourlyElementHTML =
+        forecastHourlyElementHTML +
+        `
+       <div class="col-sm border">
+
+      ${Math.round(hourlyForecast.temp)}°C
+      <br />
+      <img
+            src="images/${
+              hourlyForecast.weather[0].icon
+            }@2x.png" width=30px height=30px
+          />  
+          <br />
+          ${formatHours(hourlyForecast.dt)}:00
+       </div>
+      `;
+    }
+  });
+  forecastHourlyElementHTML = forecastHourlyElementHTML + `</div>`;
+  forecastHourlyElement.innerHTML = forecastHourlyElementHTML;
 }
 
 function degreesFahrenheit(event) {
