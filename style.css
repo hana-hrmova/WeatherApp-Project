@@ -11,12 +11,64 @@ body {
   background-color: #deecff;
   border-radius: 15px;
 }
+
+input[type="text"] {
+  border-radius: 30px;
+  background-color: white;
+  padding: 10px;
+  border: none;
+  margin-bottom: 30px;
+}
+
+.current-button {
+  border-radius: 30px;
+  padding: 10px;
+  background-color: #e8eae6 !important;
+  border: none;
+  transition: all 200ms ease-in-out;
+}
+.current-button:hover {
+  background-color: white !important;
+}
+
+input[type="submit"] {
+  border-radius: 30px;
+  padding: 10px;
+  background-color: #e8eae6 !important;
+  border: none;
+  transition: all 200ms ease-in-out;
+  margin: 0 10px;
+}
+input[type="submit"]:hover {
+  background-color: white !important;
+}
+
+#city-name {
+  font-family: "Roboto", sans-serif;
+  text-transform: capitalize;
+}
+
+#current-temperature {
+  font-family: "Roboto", sans-serif;
+  text-align: right;
+  font-size: 42px;
+}
+
+#weather-description {
+  text-transform: capitalize;
+}
+
+#icon {
+  width: 73px;
+  height: 53px;
+}
+
 .border {
   border: 3px solid #fdcfdf !important;
   border-radius: 10px;
   text-align: center;
   padding: 15px 5px;
-  margin: 2px 5px;
+  margin: 15px 5px;
   background-color: #fdcfdf;
   transition: all 200ms ease-in-out;
 }
@@ -25,6 +77,25 @@ body {
   background-color: #fff;
   border-color: #fdcfdf;
   cursor: pointer;
+}
+
+#celzius {
+  border: none;
+  background-color: #deecff;
+  padding: 0;
+}
+
+#celzius:hover {
+  color: lightslategray;
+}
+
+#fahrenheit {
+  border: none;
+  background-color: #deecff;
+  padding: 0;
+}
+#fahrenheit:hover {
+  color: lightslategray;
 }
 
 .days li {
@@ -49,29 +120,6 @@ body {
 
 .contact-info {
   text-align: center;
-}
-
-#city-name {
-  font-family: "Roboto", sans-serif;
-  text-transform: capitalize;
-}
-
-#current-temperature {
-  font-family: "Roboto", sans-serif;
-}
-
-#weather-description {
-  text-transform: capitalize;
-}
-
-#current-temperature {
-  text-align: right;
-  font-size: 42px;
-}
-
-#icon {
-  width: 73px;
-  height: 53px;
 }
 
 .contact-info a {

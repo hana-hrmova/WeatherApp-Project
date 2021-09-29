@@ -31,47 +31,45 @@
       <div class="row">
         <div class="col-sm-8">
           <div class="row">
-            <div class="formular">
-              <form id="submit-form">
+            <div class="formular ">
+              <form id="submit-form" class="col-sm-8">
                 <input
                   type="text"
                   placeholder="Search a city"
                   id="entered-city"
                 />
-                <span class="enter">
+                <span class="enter" id="enter">
                   <input
                     type="submit"
                     value="Enter"
-                    class="btn btn-outline-info"
                   />
-                </span>
-              </form>
-              <button type="button" class="btn btn-outline-info" id="current">
+                </span >
+                  <button type="button" class = "col-sm-3 current-button" id="current">
                 Current
-              </button>
-
-              <button
-                type="button"
-                class="btn btn-outline-warning"
-                id="celzius"
-              >
-                °C
-              </button>
-              <button
-                type="button"
-                class="btn btn-outline-warning"
-                id="fahrenheit"
-              >
-                °F
-              </button>
+               </button>
+              </form>
+            
             </div>
           </div>
 
           <div class="row current">
             <h1 class="col-sm-6" id="city-name">Kraków</h1>
 
-            <h1 class="col-sm-3" id="current-temperature"></h1>
+            <h1 class="col-sm-2" id="current-temperature"></h1>
           <img src="images/01d@2x.png" alt ="clear sky"class="col-sm-3" id="icon"></img>
+          <span class = "buttons col-sm-2">
+           <button type="button"  id="celzius">
+                °C
+              </button>
+              |
+              <button
+                type="button"
+               
+                id="fahrenheit"
+              >
+                °F
+              </button>
+              </span>
           </div>
           <h4 id="date"></h4>
           <h5 id="weather-description"></h5>
@@ -89,7 +87,7 @@
         </div>
         <div class="col-sm-4">
           <div class="days" >
-            <ul style="list-style: none" id="forecast-days">
+            <ul style="list-style: none" id="forecast-days" class="temp">
             </ul>
           </div>
         </div>

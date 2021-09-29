@@ -116,12 +116,6 @@ let form = document.querySelector("#submit-form");
 form.addEventListener("submit", enteredCity);
 form.addEventListener("submit", displayTemperature);
 
-function degreesCelzius(event) {
-  event.preventDefault();
-  let currentTemperature = document.querySelector("#current-temperature");
-  currentTemperature.innerHTML = publicTemp + "°C";
-}
-
 function formatDays(timestamp) {
   let date = new Date(timestamp * 1000);
   let day = date.getDay();
@@ -173,7 +167,7 @@ function displayForecastHours(response) {
         `
        <div class="col-sm border">
 
-      ${Math.round(hourlyForecast.temp)}°C
+      <span class="temp">${Math.round(hourlyForecast.temp)}°C</span>
       <br />
       <img
             src="images/${
@@ -190,10 +184,16 @@ function displayForecastHours(response) {
   forecastHourlyElement.innerHTML = forecastHourlyElementHTML;
 }
 
+function degreesCelzius(event) {
+  event.preventDefault();
+  let currentTemperature = document.querySelector("#current-temperature");
+  currentTemperature.innerHTML = publicTemp + "°C";
+}
+
 function degreesFahrenheit(event) {
   event.preventDefault();
   let currentTemperature = document.querySelector("#current-temperature");
-  currentTemperature.innerHTML = (publicTemp * 9) / 5 + 32 + "°F";
+  currentTemperature.innerHTML = Math.round((publicTemp * 9) / 5 + 32) + "°F";
 }
 
 function displayCurrent(position) {
