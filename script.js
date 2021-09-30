@@ -142,9 +142,9 @@ function displayForecastDays(response) {
           <span class="daily-forecast-max">
           ${Math.round(
             dailyForecast.temp.max
-          )}</span><span class="degree-unit"></span> / <span class="daily-forecast-min">${Math.round(
+          )}</span><span class="degree-unit">°C</span> / <span class="daily-forecast-min">${Math.round(
           dailyForecast.temp.min
-        )}</span><span class="degree-unit"></span>
+        )}</span><span class="degree-unit">°C</span>
     </li>`;
     }
   });
@@ -173,7 +173,7 @@ function displayForecastHours(response) {
 
       <span class="hourly-temp">${Math.round(
         hourlyForecast.temp
-      )}</span><span class="degree-unit"></span>
+      )}</span><span class="degree-unit"> °C</span>
       <br />
       <img
             src="images/${
@@ -211,6 +211,11 @@ function degreesCelzius(event) {
     item.innerHTML = Math.round(((currentTemp - 32) * 5) / 9);
   });
 
+  let degreesUnits = document.querySelectorAll(".degree-unit");
+  degreesUnits.forEach(function (units) {
+    units.innerHTML = "°C";
+  });
+
   celziusButton.removeEventListener("click", degreesCelzius);
   fahrenheitButton.addEventListener("click", degreesFahrenheit);
 }
@@ -235,6 +240,11 @@ function degreesFahrenheit(event) {
   dailyTempMin.forEach(function (item) {
     let currentTemp = item.innerHTML;
     item.innerHTML = Math.round((currentTemp * 9) / 5 + 32);
+  });
+
+  let degreesUnits = document.querySelectorAll(".degree-unit");
+  degreesUnits.forEach(function (units) {
+    units.innerHTML = "°F";
   });
 
   celziusButton.addEventListener("click", degreesCelzius);
