@@ -139,9 +139,12 @@ function displayForecastDays(response) {
               dailyForecast.weather[0].icon
             }@2x.png" width=30px height=30px
           />  
-          ${Math.round(dailyForecast.temp.max)}°C / ${Math.round(
+          <span class="daily-forecast-max">
+          ${Math.round(
+            dailyForecast.temp.max
+          )}</span><span class="degree-unit"></span> / <span class="daily-forecast-min">${Math.round(
           dailyForecast.temp.min
-        )}°C
+        )}</span><span class="degree-unit"></span>
     </li>`;
     }
   });
@@ -158,6 +161,7 @@ function formatHours(timestamp) {
 function displayForecastHours(response) {
   console.log(response.data.hourly);
   let forecastHourly = response.data.hourly;
+
   let forecastHourlyElement = document.querySelector("#forecast-hourly");
   let forecastHourlyElementHTML = `<div class="row">`;
   forecastHourly.forEach(function (hourlyForecast, index) {
@@ -167,7 +171,9 @@ function displayForecastHours(response) {
         `
        <div class="col-sm border">
 
-      <span class="temp">${Math.round(hourlyForecast.temp)}°C</span>
+      <span class="hourly-temp">${Math.round(
+        hourlyForecast.temp
+      )}</span><span class="degree-unit"></span>
       <br />
       <img
             src="images/${
@@ -188,12 +194,51 @@ function degreesCelzius(event) {
   event.preventDefault();
   let currentTemperature = document.querySelector("#current-temperature");
   currentTemperature.innerHTML = publicTemp + "°C";
+  let hourlyTemp = document.querySelectorAll(".hourly-temp");
+  hourlyTemp.forEach(function (temp) {
+    let currentTemp = temp.innerHTML;
+    temp.innerHTML = Math.round(((currentTemp - 32) * 5) / 9);
+  });
+  let dailyTempMax = document.querySelectorAll(".daily-forecast-max");
+  dailyTempMax.forEach(function (item) {
+    let currentTemp = item.innerHTML;
+    item.innerHTML = Math.round(((currentTemp - 32) * 5) / 9);
+  });
+
+  let dailyTempMin = document.querySelectorAll(".daily-forecast-min");
+  dailyTempMin.forEach(function (item) {
+    let currentTemp = item.innerHTML;
+    item.innerHTML = Math.round(((currentTemp - 32) * 5) / 9);
+  });
+
+  celziusButton.removeEventListener("click", degreesCelzius);
+  fahrenheitButton.addEventListener("click", degreesFahrenheit);
 }
 
 function degreesFahrenheit(event) {
   event.preventDefault();
   let currentTemperature = document.querySelector("#current-temperature");
   currentTemperature.innerHTML = Math.round((publicTemp * 9) / 5 + 32) + "°F";
+  let hourlyTemp = document.querySelectorAll(".hourly-temp");
+  hourlyTemp.forEach(function (temp) {
+    let currentTemp = temp.innerHTML;
+    temp.innerHTML = Math.round((currentTemp * 9) / 5 + 32);
+  });
+
+  let dailyTempMax = document.querySelectorAll(".daily-forecast-max");
+  dailyTempMax.forEach(function (item) {
+    let currentTemp = item.innerHTML;
+    item.innerHTML = Math.round((currentTemp * 9) / 5 + 32);
+  });
+
+  let dailyTempMin = document.querySelectorAll(".daily-forecast-min");
+  dailyTempMin.forEach(function (item) {
+    let currentTemp = item.innerHTML;
+    item.innerHTML = Math.round((currentTemp * 9) / 5 + 32);
+  });
+
+  celziusButton.addEventListener("click", degreesCelzius);
+  fahrenheitButton.removeEventListener("click", degreesFahrenheit);
 }
 
 function displayCurrent(position) {
@@ -208,10 +253,10 @@ function getCurrentPosition() {
   navigator.geolocation.getCurrentPosition(displayCurrent);
 }
 
-let celzius = document.querySelector("#celzius");
+let celziusButton = document.querySelector("#celzius");
 celzius.addEventListener("click", degreesCelzius);
 
-let fahrenheit = document.querySelector("#fahrenheit");
+let fahrenheitButton = document.querySelector("#fahrenheit");
 fahrenheit.addEventListener("click", degreesFahrenheit);
 
 let current = document.querySelector("#current");
